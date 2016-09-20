@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Bem vindo ao sistema {% endblock %}
+
+{% block jscript %}
+
+{% endblock %}
+
+{% block content %}
+    <h3><a href="{{ url_for('index') }}"> Lista recebida </a></h3>
+	{%for Nome in Nomes%}
+		<li>{{Nome}}</li>
+	{%endfor%}
+
+	<div id="content"></div>
+
+
+	<script type="text/jsx" src="./static/app.jsx"></script>
+	<script type="text/jsx">
+		var props = {
+			nome: {{Nomes|safe}}
+		} 	
+		React.render(<Contador nome={props.nome} />, document.getElementById('content') );
+	</script>
+
+{% endblock %}
